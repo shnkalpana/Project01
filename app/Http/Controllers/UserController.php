@@ -1,0 +1,53 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\Rule;
+
+class UserController extends Controller
+{
+    public function login(Request $request)
+    {
+
+        $InputFieldsValues = $request->validate([
+            'loginname' => 'required',
+            'loginpassword' => 'required'
+        ]);
+
+        if (auth()->attempt(['name' => $InputFieldsValues['loginname'], 'password' => $InputFieldsValues['loginpassword']])) {
+            $request->session()->regenerate();
+        }
+
+        if (auth()->user()['user_roll'] == 'admin') {
+            return redirect('admin');
+        }
+    }
+
+    public function register(Request $request)
+    {
+        $InputFields = $request->validate([
+            'name' => ['required', 'min : 3', Rule::unique('users', 'name')],
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'password' => ['min : 8', 'max : 30'],
+            'user_roll' => ['required'],
+            'dob' => ['required'],
+            'joined_date' => ['required'],
+            'hourly_rate' => ['required']
+        ]);
+
+        $InputFields['password'] = bcrypt($InputFields['password']);
+        $user = User::create($InputFields);
+        auth()->login($user);
+
+        return redirect('register');
+    }
+
+    public function logout()
+    {
+        auth()->logout();
+        return redirect('register');
+    }
+}
