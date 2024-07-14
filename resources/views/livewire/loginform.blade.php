@@ -1,6 +1,7 @@
 <div>
-    <form wire:submit.prevent="login">
-        <input type="text" name="username" />
-        <input type="password" name="">
-    </form>
+    @if($showLogin)
+    <x-login/>
+    @else
+    <x-register_component/>
+    @endif
 </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Http\Livewire\Loginform;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
@@ -17,15 +18,14 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/', function () {
-    return view('register');
-});
-
-Route::get('/register', function () {
     $users = auth()->user();
-    return view('register', ['users' => $users]);
+    return view('index', ['users' => $users]);
 });
 
 Route::get('/admin', [AdminController::class, 'user_name']);
 
+
 Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/login', [UserController::class, 'login']);
+Route::post('/register', [UserController::class, 'register']);
+Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');

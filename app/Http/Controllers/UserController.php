@@ -42,12 +42,22 @@ class UserController extends Controller
         $user = User::create($InputFields);
         auth()->login($user);
 
-        return redirect('register');
+        if (auth()->user()['user_roll'] == 'admin') {
+            return redirect('admin');
+        }
     }
 
     public function logout()
     {
         auth()->logout();
-        return redirect('register');
+        return redirect('/');
+    }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->back()->with('success', 'User deleted successfully.');
     }
 }

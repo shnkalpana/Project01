@@ -7,26 +7,21 @@ use Illuminate\Support\Facades\Auth;
 
 class Loginform extends Component
 {
-    public $email;
-    public $password;
-    public $remember = false;
+    public $count = 0;
+    public $showLogin = false;
 
-    protected $rules = [
-        'email' => 'required|email',
-        'password' => 'required|min:6',
-    ];
+    protected $listeners = ['showLogin'];
 
-    public function login()
+    public function showLogin()
     {
-        $this->validate();
-
-        if (Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
-            // Authentication passed...
-            return redirect()->intended('/admin');
-        } else {
-            $this->addError('email', trans('auth.failed'));
-        }
+        $this->showLogin = true;
     }
+
+    public function increment()
+    {
+        $this->count++;
+    }
+
 
     public function render()
     {
