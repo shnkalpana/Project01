@@ -1,4 +1,3 @@
-<x-header name="{{$users['name']}}"/>
-<h1>Hello admin</h1>
-
+<livewire:header/>
+    <livewire:create-project>
 <x-footer/>

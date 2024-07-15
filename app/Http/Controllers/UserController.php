@@ -44,6 +44,8 @@ class UserController extends Controller
 
         if (auth()->user()['user_roll'] == 'admin') {
             return redirect('admin');
+        } elseif (auth()->user()['user_roll'] == 'projectmanager') {
+            return redirect('project_manager');
         }
     }
 

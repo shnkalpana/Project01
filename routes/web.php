@@ -26,6 +26,10 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
+Route::get('/project_manager', function () {
+    return view('project_manager');
+});
+
 
 Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/login', [UserController::class, 'login']);
