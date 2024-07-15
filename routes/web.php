@@ -22,7 +22,9 @@ Route::get('/', function () {
     return view('index', ['users' => $users]);
 });
 
-Route::get('/admin', [AdminController::class, 'user_name']);
+Route::get('/admin', function () {
+    return view('admin');
+});
 
 
 Route::post('/logout', [UserController::class, 'logout']);
