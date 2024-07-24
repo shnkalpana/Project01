@@ -14,7 +14,16 @@ class Project extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'projectname',
-    ];
+    protected $fillable = ['user_id', 'projectname'];
+
+    public function user()
+    {
+        //eloquent one to many relationship between user and project
+        return $this->belongsTo(User::class);
+    }
+
+    public function subproject()
+    {
+        return $this->hasMany(SubProject::class);
+    }
 }

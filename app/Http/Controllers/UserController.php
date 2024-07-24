@@ -9,6 +9,7 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+    //check login is valid
     public function login(Request $request)
     {
 
@@ -21,8 +22,14 @@ class UserController extends Controller
             $request->session()->regenerate();
         }
 
+
+        //redirect according to user roll
         if (auth()->user()['user_roll'] == 'admin') {
             return redirect('admin');
+        } elseif (auth()->user()['user_roll'] == 'projectmanager') {
+            return redirect('project_manager');
+        } else {
+            return redirect('/');
         }
     }
 
@@ -46,6 +53,8 @@ class UserController extends Controller
             return redirect('admin');
         } elseif (auth()->user()['user_roll'] == 'projectmanager') {
             return redirect('project_manager');
+        } else {
+            return redirect('/');
         }
     }
 
