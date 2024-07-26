@@ -39,8 +39,9 @@ Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('user.de
 
 
 //sub projects crud operations routes
-Route::resource('subprojects', SubProjectController::class);
-// Route::get('subprojects/create', [SubProjectController::class, 'create']);
+Route::resource('/subprojects', SubProjectController::class);
+//Route::get('/subprojects/create', [SubProjectController::class, 'create']);
+//Route::get('/subprojects', [SubProjectController::class, 'index']);
 // Route::post('subprojects', [SubProjectController::class, 'store']);
 // Route::get('subprojects/{id}/edit', [SubProjectController::class, 'edit']);
 // Route::put('subprojects/{id}', [SubProjectController::class, 'update']);

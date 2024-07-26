@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use App\Models\SubProject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -10,8 +11,11 @@ class SubProjectController extends Controller
 {
     public function index()
     {
-        $subprojects = SubProject::all();
-        return view('subprojects.index', compact('subprojects'));
+        $subprojects = SubProject::with('projects')->get();
+
+        return view('subprojects.index',[
+            'subprojects'=>$subprojects,
+        ]);
     }
 
     public function create()
@@ -29,7 +33,7 @@ class SubProjectController extends Controller
         );
 
         SubProject::create($validate);
-        return Redirect('project_manager')->with('success', 'subproject created successfully');
+        return Redirect('subprojects')->with('success', 'subproject created successfully');
     }
 
     public function edit($id)
@@ -50,5 +54,9 @@ class SubProjectController extends Controller
         $subproject = SubProject::findOrFail($id);
         $subproject->delete();
         return redirect('subprojects')->with('success', 'Product deleted successfully.');
+    }
+
+    public function show(SubProject $subproject){
+        return view('subprojects.show', ['SubProject'=>$subproject]);
     }
 }

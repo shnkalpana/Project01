@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+//use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SubProject extends Model
 {
@@ -11,8 +14,8 @@ class SubProject extends Model
 
     protected $fillable = ['project_id', 'sub_project_name'];
 
-    public function project()
+    public function projects()
     {
-        $this->belongsTo(Project::class);
+        return $this->belongsTo(Project::class);
     }
 }
