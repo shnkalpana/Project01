@@ -20,6 +20,10 @@ class UserController extends Controller
 
         if (auth()->attempt(['name' => $InputFieldsValues['loginname'], 'password' => $InputFieldsValues['loginpassword']])) {
             $request->session()->regenerate();
+        }elseif(auth()->attempt(['email' => $InputFieldsValues['loginname'], 'password' => $InputFieldsValues['loginpassword']])){
+            $request->session()->regenerate();
+        }else{
+            redirect('/'); 
         }
 
 

@@ -19,15 +19,8 @@ class ProjectCard extends Component
     }
 
     public function createSubProject()
-    {
-        // return redirect('subprojects.create');
-        // if ($this->CreateSubProjects)
-        //     $this->CreateSubProjects = false;
-        // else
+    {        
         $this->CreateSubProjects = true;
-        //TODO: assign boolean variable to show subproject form 
-        //create livewire component to add subproject to db,
-        //show creted subprojects in livewire component inside project card
     }
 
     public function render()

@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 
 class Loginform extends Component
 {
-    public $count = 0;
     public $showLogin = false;
 
     protected $listeners = ['showLogin'];
@@ -16,12 +15,6 @@ class Loginform extends Component
     {
         $this->showLogin = true;
     }
-
-    public function increment()
-    {
-        $this->count++;
-    }
-
 
     public function render()
     {

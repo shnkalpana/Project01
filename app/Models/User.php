@@ -51,4 +51,10 @@ class User extends Authenticatable
         //eloquent relationship one to many project and user
         return $this->hasMany(Project::class);
     }
+
+    public function assignedTasks()
+    {
+        //eloquent relationship one to many project and user
+        return $this->hasMany(Tasks::class);
+    }
 }

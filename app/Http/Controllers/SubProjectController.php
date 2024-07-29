@@ -33,7 +33,7 @@ class SubProjectController extends Controller
         );
 
         SubProject::create($validate);
-        return Redirect('subprojects')->with('success', 'subproject created successfully');
+        return Redirect('project_manager')->with('success', 'subproject created successfully');
     }
 
     public function edit($id)
@@ -56,7 +56,8 @@ class SubProjectController extends Controller
         return redirect('subprojects')->with('success', 'Product deleted successfully.');
     }
 
-    public function show(SubProject $subproject){
-        return view('subprojects.show', ['SubProject'=>$subproject]);
+    public function show($id){
+        $subproject = Subproject::findOrFail($id);
+        return view('subprojects.show', ['subproject'=>$subproject]);
     }
 }

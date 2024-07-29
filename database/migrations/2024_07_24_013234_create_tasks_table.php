@@ -16,6 +16,13 @@ class CreateTasksTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->date('deadline');
+            $table->boolean('done')->default(false);
+
+            $table->foreignID('sub_project_id')->constrained('sub_projects')->onDelete('cascade');
+            $table->foreignID('assigned_user_id')->constrained('users')->onDelete('cascade');
         });
     }
 

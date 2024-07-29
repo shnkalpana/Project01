@@ -5,6 +5,7 @@ use App\Http\Livewire\Loginform;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TasksController;
 use App\Http\Controllers\SubProjectController;
 
 /*
@@ -38,11 +39,7 @@ Route::post('/register', [UserController::class, 'register']);
 Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
 
-//sub projects crud operations routes
+//CRUD routes for subprojects
 Route::resource('/subprojects', SubProjectController::class);
-//Route::get('/subprojects/create', [SubProjectController::class, 'create']);
-//Route::get('/subprojects', [SubProjectController::class, 'index']);
-// Route::post('subprojects', [SubProjectController::class, 'store']);
-// Route::get('subprojects/{id}/edit', [SubProjectController::class, 'edit']);
-// Route::put('subprojects/{id}', [SubProjectController::class, 'update']);
-// Route::delete('subprojects/{id}', [SubProjectController::class, 'destroy']);
+
+Route::resource('/tasks', TasksController::class);

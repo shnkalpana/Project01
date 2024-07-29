@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTasksRequest;
-use App\Http\Requests\UpdateTasksRequest;
+use Illuminate\Http\Request;
 use App\Models\Tasks;
 
 class TasksController extends Controller
@@ -15,7 +15,8 @@ class TasksController extends Controller
      */
     public function index()
     {
-        //
+        $tasks = Tasks::with('subprojects')->get();
+        return view('tasks.index', ['tasks' => $tasks]);
     }
 
     /**
@@ -26,6 +27,7 @@ class TasksController extends Controller
     public function create()
     {
         //
+        return view('tasks.create');
     }
 
     /**
@@ -34,9 +36,21 @@ class TasksController extends Controller
      * @param  \App\Http\Requests\StoreTasksRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTasksRequest $request)
+    public function store(Request $request)
     {
         //
+        $validate = $request->validate(
+            [
+                'name' => 'required|string|max:255',
+                'sub_project_id' => 'required',
+                'assigned_user_id' => 'required',
+                'description' => 'required',
+                'deadline' => 'required'
+            ]
+        );
+
+        Tasks::create($validate);
+        return Redirect()->back()->with('success', 'subproject created successfully');
     }
 
     /**
@@ -68,7 +82,7 @@ class TasksController extends Controller
      * @param  \App\Models\Tasks  $tasks
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTasksRequest $request, Tasks $tasks)
+    public function update(Request $request, Tasks $tasks)
     {
         //
     }

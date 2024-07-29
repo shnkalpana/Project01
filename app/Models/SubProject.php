@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Tasks;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 //use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -16,6 +17,10 @@ class SubProject extends Model
 
     public function projects()
     {
-        return $this->belongsTo(Project::class);
+        return $this->belongsTo(Project::class,'project_id');
+    }
+
+    public function tasks(){
+        return $this->hasMany(Tasks::class);
     }
 }
