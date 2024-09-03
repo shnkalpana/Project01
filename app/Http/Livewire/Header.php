@@ -6,12 +6,12 @@ use Livewire\Component;
 
 class Header extends Component
 {
-    public $name;
+    public $user;
 
     public function mount()
     {
         if (auth()->check()) {
-            $this->name = auth()->user()->name;
+            $this->user = auth()->user();
         }
     }
 

@@ -4,37 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <!--Boots trap add -->
-    <link href ="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Project +</title>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @livewireStyles
 </head>
-<body>
+<body class=" bg-gray-200">
     @livewireScripts
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <li class="nav-item " style="list-style-type: none;">
-            <a class="navbar-brand" href="/">Project +</a>
+      <div class=" bg-gray-400">
+        <!-- loged users -->
+        @auth
+        <ul class=" py-2 px-2">
+          <li>
+            <p class=" justify-start">{{$name}}</p>  
           </li>
-          
-          
-          <li class="nav-item " style="list-style-type: none;">
-            @auth
-            <div class="d-flex">
-                <p>Hello {{$name}}</p>
-            </div>
-            @else
-            <button wire:click="$emit('showLogin')">Login</button>
-            @endauth
-          </li>        
-            @auth
-            <li class="nav-item" style="list-style-type: none;">
-            <form action="/logout" method="post">
-              @csrf
-          <button> Logout</button>
-          </form>
-            @else
-            @endauth
+          <li>
+            <a href="/logout" class=" justify-end"> Logout </a>
           </li>
-        </div>
-      </nav>
+        </ul>
+        @else
+          <div class=" px-2 py-2 flex justify-between text-xl text-zinc-800 space-x-12">
+              <a href="/" class=" ">Project +</a>
+              <button wire:click="$emit('showLogin')" class="">Login</button>
+          </div>
+        @endauth
+      </div>
+    </div>
+    

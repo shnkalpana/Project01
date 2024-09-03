@@ -32,6 +32,10 @@ Route::get('/project_manager', function () {
     return view('project_manager');
 });
 
+Route::get('/designer', function () {
+    return view('designer');
+});
+
 
 Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/login', [UserController::class, 'login']);
