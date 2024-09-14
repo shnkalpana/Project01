@@ -1,7 +1,7 @@
-<div class="container m-4">    
+<div class=" mx-2 max-w-md p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">    
             @foreach ($projects as $item)
-            <div class="card m-2">
-                <div class="card-header">
+            <div class="">
+                <div class=" mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"">
                     <span class="fw-bold">
                         {{$item->projectname}}
                     </span>
@@ -9,29 +9,29 @@
                         Created at: {{$item->created_at}}
                     </span>
                 </div>
-                <div class="card-body">
-                    <div class="col-8">
+                <div class="">
+                    <div class="">
                         @if($item->subprojects->count() > 0)
-                        <div class="container-fluid">
-                            <div class="mt-10">         
-                                <table class="table table-bordered">
-                                    <thead>
+                        
+                            <div class=" relative overflow-x-auto shadow-md rounded-lg">         
+                                <table class="w-full text-sm sm:text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <thead class=" text-xs sm:text-sm  text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>                                          
-                                          <th scope="col">sub project name</th>
-                                          <th scope="col">created at</th>
-                                          <th scope="col">tasks</th>
+                                          <th scope="col" class="px-6 py-3">sub project name</th>
+                                          <th scope="col" class="px-6 py-3">created at</th>
+                                          <th scope="col" class="px-6 py-3">tasks</th>
                                         </tr>
                                       </thead>
                                       <tbody>
                                         @foreach($item->subprojects as $subproject)
-                                        <tr>                                                              
-                                            <td>
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">                                                              
+                                            <td class="px-6 py-4">
                                                 <a href="{{route('subprojects.show',$subproject->id)}}">
                                                     {{$subproject->sub_project_name}}
                                                 </a>
                                                 </td>
-                                            <td>{{$subproject->created_at}}</td>
-                                            <td>{{$subproject->tasks->count()}}</td>                    
+                                            <td class="px-6 py-4">{{$subproject->created_at}}</td>
+                                            <td class="px-6 py-4">{{$subproject->tasks->count()}}</td>                    
                                         </tr>
                                         @endforeach
                                     </tbody>

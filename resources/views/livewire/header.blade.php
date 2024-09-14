@@ -13,14 +13,10 @@
       <div class=" bg-gray-400">
         <!-- loged users -->
         @auth
-        <ul class=" py-2 px-2">
-          <li>
-            <p class=" justify-start">{{$name}}</p>  
-          </li>
-          <li>
+        <div class=" px-2 py-2 flex justify-between text-xl text-zinc-800 space-x-12">
+            <p class=" justify-start">Hello {{$user->name}}!</p>  
             <a href="/logout" class=" justify-end"> Logout </a>
-          </li>
-        </ul>
+        </div>
         @else
           <div class=" px-2 py-2 flex justify-between text-xl text-zinc-800 space-x-12">
               <a href="/" class=" ">Project +</a>

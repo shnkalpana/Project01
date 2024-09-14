@@ -4,7 +4,7 @@
         </div>
     <form class=" pb-2" action="/register" method="post">
         @csrf
-            <div class=" space-y-12">
+            <div class=" space-y-8">
                 <div class="row">
                     <label class="form-label"> name: </label>
                     <input type="text" name="name" placeholder="name" required />

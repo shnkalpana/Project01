@@ -37,7 +37,7 @@ Route::get('/designer', function () {
 });
 
 
-Route::post('/logout', [UserController::class, 'logout']);
+Route::get('/logout', [UserController::class, 'logout']);
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/register', [UserController::class, 'register']);
 Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');

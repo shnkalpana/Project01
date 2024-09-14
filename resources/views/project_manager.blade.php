@@ -1,3 +1,6 @@
 <livewire:header/>
-    <livewire:create-project>
+    <div class=" mx-2 mt-2">
+        <livewire:create-project>
+    </div>
+   
 <x-footer/>
