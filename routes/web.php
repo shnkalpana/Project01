@@ -40,8 +40,10 @@ Route::get('/designer', function () {
 Route::get('/logout', [UserController::class, 'logout']);
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/register', [UserController::class, 'register']);
-Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
-
+//Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+//Route::get('users/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+//Route::put('users/{id}', [UserController::class, 'update']);
+Route::resource('user', UserController::class);
 
 //CRUD routes for subprojects
 Route::resource('/subprojects', SubProjectController::class);

@@ -20,4 +20,8 @@ class UserCard extends Component
     {
         return view('livewire.user-card');
     }
+
+    public function editUser(){
+        
+    }
 }

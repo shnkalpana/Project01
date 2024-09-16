@@ -1,33 +1,36 @@
 <livewire:header/>
-<div class="container">
-   @livewire('create-task',['subprojectid'=>$subproject->id])
+<div class=" mx-2">
+  <div class=" mt-2">
+    @livewire('create-task',['subprojectid'=>$subproject->id])
+  </div>
+   
 
     @if($subproject->tasks->isEmpty())
-      <div>
-        <p>Not any tasks created yet!</p>
+      <div class=" mt-2">
+        <p class="block mb-2 text-sm font-medium text-brown-900 dark:text-white">Not any tasks created yet!</p>
       </div>   
     @else
-    <div class="mt-2">         
-      <table class="table table-bordered">
-          <thead>
+    <div class=" mt-2 relative overflow-x-auto shadow-md rounded-xl">       
+      <table class="w-full text-sm sm:text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead class=" text-xs sm:text-sm  text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th scope="col">Task</th>
-                <th scope="col">description</th>
-                <th scope="col">created at</th>
-                <th scope="col">Deadline</th>
-                <th scope="col">Responsible</th>
-                <th scope="col">Status</th>
+                <th scope="col" class="px-6 py-3">Task</th>
+                <th scope="col" class="px-6 py-3">description</th>
+                <th scope="col" class="px-6 py-3">created at</th>
+                <th scope="col" class="px-6 py-3">Responsible</th>
+                <th scope="col" class="px-6 py-3">Deadline</th>
+                <th scope="col" class="px-6 py-3">Status</th>
               </tr>
             </thead>
             <tbody>
               @foreach($subproject->tasks as $task)
-              <tr>
-                  <td>{{$task->name}}</td>
-                  <td>{{$task->description}}</td>subproject
-                  <td>{{$task->created_at}}</td>
-                  <td>{{$task->assignedUser->name}}</td>
-                  <td>{{$task->deadline}}</td>
-                  <td>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <td class="px-6 py-4">{{$task->name}}</td>
+                  <td class="px-6 py-4">{{$task->description}}</td>
+                  <td class="px-6 py-4">{{$task->created_at}}</td>
+                  <td class="px-6 py-4">{{$task->assignedUser->name}}</td>
+                  <td class="px-6 py-4">{{$task->deadline}}</td>
+                  <td class="px-6 py-4">
                   @if($task->done>0)
                   <span>done</span>
                   @else

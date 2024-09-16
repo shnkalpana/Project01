@@ -19,10 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('user_roll')->default('manager');
+            $table->string('user_roll')->default('user');
             $table->date('dob')->nullable();
             $table->date('joined_date')->nullable();
-            $table->double('hourly_rate')->defalt('0.00');
+            $table->double('hourly_rate',8,2)->defalt(0.00);
             $table->rememberToken();
             $table->timestamps();
         });

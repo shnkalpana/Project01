@@ -1,7 +1,7 @@
 <div>
     @if($showLogin)
-    <x-login/>
-    @else
     <x-register_component/>
+    @else
+    <x-login/>
     @endif
 </div>

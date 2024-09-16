@@ -1,9 +1,9 @@
 <div>
     @auth
-    <form wire:submit.prevent="createProject" class=" pl-2">
+    <form wire:submit.prevent="createProject" class=" pl-2 pb-2">
         @csrf
         <input type="text" class=" outline-1 rounded-lg py-1.5 ml-2 shadow-sm" wire:model="projectname">
-        <button type="submit" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"> Create Project </button>
+        <button type="submit" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> Create Project </button>
         @error('project_name') <span class="text-danger">{{ $message }}</span> @enderror
     </form>
 

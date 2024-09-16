@@ -2,12 +2,12 @@
             @foreach ($projects as $item)
             <div class="">
                 <div class=" mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"">
-                    <span class="fw-bold">
+                    <p class="text-2xl">
                         {{$item->projectname}}
-                    </span>
-                    <span class="fw-bold">
+                    </p>
+                    <p class=" text-lg">
                         Created at: {{$item->created_at}}
-                    </span>
+                    </p>
                 </div>
                 <div class="">
                     <div class="">
@@ -39,9 +39,9 @@
                             </div>
                     </div>                       
                         @else                            
-                            <p>No any subprojects</p>
+                            <p class="block mb-2 text-sm font-medium text-brown-900 dark:text-white">No any subprojects</p>
                         @endif
-                        <button class="btn btn-primary" wire:click="createSubProject">Add sub project</button>
+                        <button class=" mt-2 inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" wire:click="createSubProject">Add sub project</button>
                             @if($CreateSubProjects)
                                 @include('subprojects.create',['projectid'=>$item['id']])
                             @endif
