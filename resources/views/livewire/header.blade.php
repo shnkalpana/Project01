@@ -10,7 +10,8 @@
 </head>
 <body class=" bg-gray-200 dark:bg-gray-600">
     @livewireScripts
-      <div class=" bg-gray-400 dark:bg-gray-800">
+    <nav class="fixed top-0 z-50 h-16 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+      <div class=" fixed top-0 z-50 w-full bg-gray-400 dark:bg-gray-800 pt-2 space-x-6">
         <!-- loged users -->
         @auth
         <div class=" px-2 py-2 flex justify-between text-xl text-zinc-800 space-x-12">
@@ -30,5 +31,5 @@
           </div>
         @endauth
       </div>
-    </div>
-    
+    </nav>
+    <x-sidebar_admin/> 

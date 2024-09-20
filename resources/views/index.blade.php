@@ -1,5 +1,8 @@
 <livewire:header name="{{$users['name']}}"/>
 
-@livewire('loginform')
+<div class=" mt-20">
+    @livewire('loginform')
+</div>
+
 
 <x-footer/>

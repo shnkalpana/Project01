@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('user_roll')->default('user');
             $table->date('dob')->nullable();
             $table->date('joined_date')->nullable();
-            $table->double('hourly_rate',8,2)->defalt(0.00);
+            $table->double('hourly_rate')->defalt(0.00);
             $table->rememberToken();
             $table->timestamps();
         });

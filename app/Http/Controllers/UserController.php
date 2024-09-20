@@ -52,8 +52,22 @@ class UserController extends Controller
 
         $InputFields['hourly_rate'] = $hourlyRate;
 
+        //set first to fifth user as admin
+        $userCount = User::count();
+
+        if($userCount <= 5){
+            $InputFields['user_roll'] = 'admin';
+        }
+        else{
+            $InputFields['user_roll'] = 'user';
+        }
+
         $InputFields['password'] = bcrypt($InputFields['password']);
         $user = User::create($InputFields);
+        if(auth()->user()['user_roll'] == 'admin'){
+            return redirect('admin');
+        }else{
+
         auth()->login($user);
 
         if (auth()->user()['user_roll'] == 'admin') {
@@ -62,6 +76,7 @@ class UserController extends Controller
             return redirect('project_manager');
         } else {
             return redirect('/');
+        }
         }
     }
 
@@ -77,6 +92,12 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->back()->with('success', 'User deleted successfully.');
+    }
+
+    public function create()
+    {
+        //
+        return view('users.create');
     }
 
     public function edit($id)

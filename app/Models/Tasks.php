@@ -28,4 +28,8 @@ class Tasks extends Model
     {
         return $this->belongsTo(User::class, 'assigned_user_id');
     }
+
+    public function boms(){
+        return $this->hasMany(bom::class);
+    }
 }

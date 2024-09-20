@@ -3,9 +3,14 @@
 use App\Models\User;
 use App\Http\Livewire\Loginform;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BomController;
+use App\Http\Controllers\PartController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TasksController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\AssembleController;
+use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\SubProjectController;
 
 /*
@@ -45,7 +50,25 @@ Route::post('/register', [UserController::class, 'register']);
 //Route::put('users/{id}', [UserController::class, 'update']);
 Route::resource('user', UserController::class);
 
+//CRUD routes for projects
+Route::resource('/projects', ProjectController::class);
+
 //CRUD routes for subprojects
 Route::resource('/subprojects', SubProjectController::class);
 
+//CRUD routes for tasks
 Route::resource('/tasks', TasksController::class);
+
+//CRUD routes for suppliers
+Route::resource('/suppliers', SupplierController::class);
+
+
+//CRUD routes for parts
+Route::resource('/parts', PartController::class);
+
+
+//CRUD routes for assembles
+Route::resource('/assembles', AssembleController::class);
+
+//CRUD routes for boms
+Route::resource('/boms', BomController::class);
