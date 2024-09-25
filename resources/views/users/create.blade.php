@@ -5,7 +5,7 @@
             @csrf
             <h5 class="text-xl font-medium text-gray-900 dark:text-white">Create new user </h5>
                 
-            <form action="/register" method="POST" class=" space-y-2">
+            <form action="{{url('user')}}" method="POST" class=" space-y-2">
                 @csrf
                 <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> name </label>

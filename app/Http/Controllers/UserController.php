@@ -64,9 +64,6 @@ class UserController extends Controller
 
         $InputFields['password'] = bcrypt($InputFields['password']);
         $user = User::create($InputFields);
-        if(auth()->user()['user_roll'] == 'admin'){
-            return redirect('admin');
-        }else{
 
         auth()->login($user);
 
@@ -76,7 +73,6 @@ class UserController extends Controller
             return redirect('project_manager');
         } else {
             return redirect('/');
-        }
         }
     }
 
@@ -99,6 +95,31 @@ class UserController extends Controller
         //
         return view('users.create');
     }
+
+    public function store(Request $request)
+    {
+        //
+        $validate = $request->validate(
+            [
+            'name' => ['required', 'min : 3', Rule::unique('users', 'name')],
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'password' => ['min : 8', 'max : 30'],
+            'dob' => ['required'],
+            'joined_date' => ['required'],
+            'joined_date' => ['required'],
+            'user_roll' => ['required'],
+            ]
+        );
+
+        $hourlyRate = $request->input('hourly_rate', 0.00);
+
+        $InputFields['hourly_rate'] = $hourlyRate;
+
+        User::create($validate);
+        return Redirect()->back()->with('success', 'subproject created successfully');
+   
+    }
+
 
     public function edit($id)
     {
