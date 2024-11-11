@@ -7,6 +7,7 @@
     <title>Project +</title>
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @livewireStyles
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class=" bg-gray-200 dark:bg-gray-600">
     @livewireScripts
@@ -15,12 +16,12 @@
         <!-- loged users -->
         @auth
         <div class=" px-2 py-2 flex justify-between text-xl text-zinc-800 space-x-12">
-          @if($user->user_roll == 'admin')  
-          <a href="/admin" class=" justify-start text-xl font-medium text-gray-900 dark:text-white space-x-12">Hello {{$user->name}}!</p>  
+          @if($user->user_roll == 'admin')
+          <a href="/admin" class=" justify-start text-xl font-medium text-gray-900 dark:text-white space-x-12">Hello {{$user->name}}!</a>
           @elseif($user->user_roll == 'projectmanager')
-          <a href="/project_manager" class=" justify-start text-xl font-medium text-gray-900 dark:text-white space-x-12">Hello {{$user->name}}!</p>
+          <a href="/project_manager" class=" justify-start text-xl font-medium text-gray-900 dark:text-white space-x-12">Hello {{$user->name}}!</a>
           @else
-          <a href="/" class=" justify-start text-xl font-medium text-gray-900 dark:text-white space-x-12">Hello {{$user->name}}!</p>
+          <a href="/" class=" justify-start text-xl font-medium text-gray-900 dark:text-white space-x-12">Hello {{$user->name}}!</a>
           @endif
             <a href="/logout" class=" justify-end text-xl font-medium text-gray-900 dark:text-white space-x-12"> Logout </a>
         </div>
@@ -29,7 +30,13 @@
               <a href="/" class=" ">Project +</a>
               <button wire:click.prevent="$emit('showLogin')" >Create account</button>
           </div>
-        @endauth
+          @endauth
       </div>
     </nav>
-    <x-sidebar_admin/> 
+    @auth
+    @if($user->user_roll == 'admin')
+    <x-sidebar_admin/>
+    @elseif($user->user_roll == 'projectmanager')
+    <x-sidebar_pm/>
+    @endif
+    @endauth

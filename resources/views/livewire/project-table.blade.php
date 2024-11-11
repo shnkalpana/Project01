@@ -11,6 +11,8 @@
                 </tr>
               </thead>
               <tbody>
+                @auth
+                @if(auth()->user()->user_roll == 'admin')
                 @foreach($projects as $item)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <td class="px-6 py-4">{{$item->projectname}}</td>
@@ -20,6 +22,20 @@
                   </td>
                 </tr>
                 @endforeach
+                @endif
+                @if(auth()->user()->user_roll == 'projectmanager')
+                @foreach($userProjects as $item)
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <td class="px-6 py-4">{{$item->projectname}}</td>
+                    <td class="px-6 py-4">{{$item->created_at}}</td>
+                    <td class="px-6 py-4">{{$item->subprojects->count()}}</td>
+                    <td class="px-6 py-4">{{$item->user->name}}</td>
+                  </td>
+                </tr>
+                @endforeach
+                @endif
+                @endauth
+                
             </tbody>
           </table>
       </div> 

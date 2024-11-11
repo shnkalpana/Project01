@@ -18,13 +18,13 @@ class Part extends Model
         'weight',
     ];
 
-    public function suppliers()
+    public function supplier()
     {
         return $this->belongsTo(Supplier::class,'supplierid');
     }
 
-    public function assembles()
+    public function boms()
     {
-        return $this->belongsToMany(Assemble::class);
+        return $this->hasMany(Bom::class);
     }
 }

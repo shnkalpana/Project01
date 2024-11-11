@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Assemble;
+use App\Models\Bom;
+use App\Models\Part;
+use App\Models\Supplier;
+use App\Models\Tasks;
 use Illuminate\Http\Request;
 
 class BomController extends Controller
@@ -14,6 +19,7 @@ class BomController extends Controller
     public function index()
     {
         //
+        return view('boms.index');
     }
 
     /**
@@ -24,6 +30,13 @@ class BomController extends Controller
     public function create()
     {
         //
+
+        $boms = Bom::All();
+        $tasks = Tasks::All();
+        $parts = Part::All();
+        $suppliers = Supplier::All();
+        $assembles = Assemble::All();
+        return view('boms.create',compact('boms','tasks','parts','suppliers','assembles'));
     }
 
     /**
@@ -35,6 +48,19 @@ class BomController extends Controller
     public function store(Request $request)
     {
         //
+        $validate = $request->validate(
+            [
+                 'taskid' => 'required',
+                 'partid' => 'required',
+                 'qty' => 'required',
+                 'price' => 'required',
+                 'weight' => 'required'
+            ]
+        );
+
+        Bom::create($validate);
+
+        return Redirect()->back()->with('success', 'bom added successfully');
     }
 
     /**

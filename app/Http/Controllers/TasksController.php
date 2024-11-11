@@ -50,6 +50,7 @@ class TasksController extends Controller
         );
 
         Tasks::create($validate);
+
         return Redirect()->back()->with('success', 'subproject created successfully');
     }
 

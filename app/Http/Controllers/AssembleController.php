@@ -13,7 +13,8 @@ class AssembleController extends Controller
      */
     public function index()
     {
-        //
+        //index
+        
     }
 
     /**

@@ -11,7 +11,7 @@ class Bom extends Model
 
     protected $fillable = [
         'taskid',
-        'assembleid',
+        'partid',
         'qty',
         'price',
         'weight',
@@ -22,8 +22,8 @@ class Bom extends Model
         return $this->belongsTo(Tasks::class,'taskid');
     }
 
-    public function assembles()
+    public function parts()
     {
-        return $this->belongsToMany(Assemble::class);
+        return $this->belongsTo(Part::class,'partid');
     }
 }

@@ -15,6 +15,15 @@
             <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
                 Not registered? <button wire:click.prevent="$emit('showLogin')" class="text-blue-700 hover:underline dark:text-blue-500">Create account</button>
             </div>
+            @if ($errors->any())
+                     <div class="alert alert-danger">
+                         <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                         </ul>
+                    </div>
+                @endif
         </form>
     </div>
     

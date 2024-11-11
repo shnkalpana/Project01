@@ -7,18 +7,11 @@ use App\Models\SubProject;
 
 class ShowSubProjects extends Component
 {
-    public $projectid;
-    public $ShowTable = false;
-    public $count = 0;
+    public $userProjects;
 
-    public function mount($projectid)
+    public function mount()
     {
-        $this->projectid = $projectid;
-    }
-
-    public function showtable($projectid)
-    {
-        $this->count = SubProject::where('project_id', $projectid)->count();
+        $this->userProjects = auth()->user()->projects;
     }
 
     public function render()

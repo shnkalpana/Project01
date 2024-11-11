@@ -108,12 +108,9 @@ class UserController extends Controller
             'joined_date' => ['required'],
             'joined_date' => ['required'],
             'user_roll' => ['required'],
+            'hourly_rate' => ['required'],
             ]
         );
-
-        $hourlyRate = $request->input('hourly_rate', 0.00);
-
-        $InputFields['hourly_rate'] = $hourlyRate;
 
         User::create($validate);
         return Redirect()->back()->with('success', 'subproject created successfully');
