@@ -63,6 +63,7 @@ class TasksController extends Controller
     public function show(Tasks $tasks)
     {
         //
+        return view('tasks.index');
     }
 
     /**
@@ -86,6 +87,7 @@ class TasksController extends Controller
     public function update(Request $request, Tasks $tasks)
     {
         //
+
     }
 
     /**
@@ -97,5 +99,13 @@ class TasksController extends Controller
     public function destroy(Tasks $tasks)
     {
         //
+    }
+
+    public function designer()
+    {
+        $userId = auth()->user()['id']; // Get the authenticated user's ID
+        $tasks = Tasks::where('assigned_user_id', $userId)->get(); // Retrieve tasks assigned to the user
+
+        return view('/designer', compact('tasks'));
     }
 }

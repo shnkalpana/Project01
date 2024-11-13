@@ -37,10 +37,7 @@ Route::get('/project_manager', function () {
     return view('project_manager');
 });
 
-Route::get('/designer', function () {
-    return view('designer');
-});
-
+Route::get('/designer', [TasksController::class, 'designer']);
 
 Route::get('/logout', [UserController::class, 'logout']);
 Route::post('/login', [UserController::class, 'login']);

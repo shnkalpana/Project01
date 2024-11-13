@@ -21,7 +21,7 @@
           @elseif($user->user_roll == 'projectmanager')
           <a href="/project_manager" class=" justify-start text-xl font-medium text-gray-900 dark:text-white space-x-12">Hello {{$user->name}}!</a>
           @else
-          <a href="/" class=" justify-start text-xl font-medium text-gray-900 dark:text-white space-x-12">Hello {{$user->name}}!</a>
+          <a href="/designer" class=" justify-start text-xl font-medium text-gray-900 dark:text-white space-x-12">Hello {{$user->name}}!</a>
           @endif
             <a href="/logout" class=" justify-end text-xl font-medium text-gray-900 dark:text-white space-x-12"> Logout </a>
         </div>
@@ -35,8 +35,10 @@
     </nav>
     @auth
     @if($user->user_roll == 'admin')
-    <x-sidebar_admin/>
+        <x-sidebar_admin/>
     @elseif($user->user_roll == 'projectmanager')
-    <x-sidebar_pm/>
+        <x-sidebar_pm/>
+    @elseif($user->user_roll == 'user')
+        <x-sidebar_user/>
     @endif
     @endauth

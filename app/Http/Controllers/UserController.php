@@ -19,12 +19,15 @@ class UserController extends Controller
             'loginpassword' => 'required'
         ]);
 
+        //check login name match with user name or email
         if (auth()->attempt(['name' => $InputFieldsValues['loginname'], 'password' => $InputFieldsValues['loginpassword']])) {
             $request->session()->regenerate();
         }elseif(auth()->attempt(['email' => $InputFieldsValues['loginname'], 'password' => $InputFieldsValues['loginpassword']])){
             $request->session()->regenerate();
         }else{
-            redirect('/'); 
+            redirect('/')->withErrors([
+                'login_error' => 'One or more inputs are not match, please enter correct user name/email and password'
+            ])->withInput();
         }
 
 
@@ -33,6 +36,8 @@ class UserController extends Controller
             return redirect('admin');
         } elseif (auth()->user()['user_roll'] == 'projectmanager') {
             return redirect('project_manager');
+        } elseif (auth()->user()['user_roll'] == 'user') {
+            return redirect('designer');
         } else {
             return redirect('/');
         }
@@ -114,7 +119,6 @@ class UserController extends Controller
 
         User::create($validate);
         return Redirect()->back()->with('success', 'subproject created successfully');
-   
     }
 
 
@@ -122,7 +126,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         return view('users.edit', compact('user'));
-    
+
     }
 
     public function update(Request $request, $id)
@@ -136,13 +140,7 @@ class UserController extends Controller
            'user_roll' => 'required',
         ]);
 
-        // Update the user's data
-        //$user->name = $validatedData['name'];
-        //$user->email = $validatedData['email'];
-        //$user->hourly_rate = $validatedData['hourly_rate'];
-        //$user->user_roll = $validatedData['user_roll'];
         $user->update($validatedData);
-        //$user->save();
 
         // Redirect back or to a success page
         return redirect('/admin')->with('success', 'User updated successfully!');
