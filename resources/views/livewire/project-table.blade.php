@@ -1,6 +1,6 @@
 <div>
-    <h1 class=" mt-4 pl-4 text-2xl sm:text-sm  text-gray-700 uppercase dark:text-white" > Projects </h1>
-    <div class=" mt-2 relative overflow-x-auto shadow-md rounded-xl">
+    <h1 class=" text-2xl sm:text-sm  text-gray-700 uppercase dark:text-white" > Projects </h1>
+    <div class="mt-2 relative overflow-x-auto shadow-md rounded-xl">
         <table class="w-full text-sm sm:text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class=" text-xs sm:text-sm  text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>

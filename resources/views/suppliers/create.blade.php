@@ -1,37 +1,37 @@
 <livewire:header/>
-<div class=" flex justify justify-center mt-5"> 
-    <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700" >
-        <form class=" space-y-6" action="{{url('suppliers')}}" method="post">
+<div class=" w-fit flex justify-items-center align-middle">
+    <div class=" w-fit bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700" >
+        <form class=" space-y-2" action="{{url('suppliers')}}" method="post">
             @csrf
-            <h5 class="text-xl font-medium text-gray-900 dark:text-white">Create new supplier </h5>
-                
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> name </label>
+            <h5 class=" text-center text-xl font-medium text-gray-900 dark:text-white">Create new supplier </h5>
+
+                    <div class=" flex justify-items-center w-fit ">
+                        <label class=" w-32 text-sm font-medium text-gray-900 dark:text-white"> name </label>
                         <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" type="text" name="name" placeholder="name" required />
                     </div>
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> weblink </label>
-                        <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" type="text" name="website" placeholder="name" />
+                    <div class=" flex justify-items-center w-fit">
+                        <label class=" w-32 block mb-2 text-sm font-medium text-gray-900 dark:text-white"> weblink </label>
+                        <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" type="text" name="website" placeholder="web link" />
                     </div>
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> email 1 </label>
-                        <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" type="email" name="email1" placeholder="email" />
+                    <div class="flex justify-items-center w-fit">
+                        <label class=" w-32 block mb-2 text-sm font-medium text-gray-900 dark:text-white"> email 1 </label>
+                        <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" type="email" name="email1" placeholder="email 1" />
                     </div>
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> email 2 </label>
-                        <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" type="email" name="email2" placeholder="email"/>
+                    <div class="flex justify-items-center w-fit">
+                        <label class=" w-32 block mb-2 text-sm font-medium text-gray-900 dark:text-white"> email 2 </label>
+                        <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" type="email" name="email2" placeholder="email 2"/>
                     </div>
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> contact number </label>
-                        <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" type="text" name="contact"/>
+                    <div class=" flex justify-items-center w-fit">
+                        <label class=" w-32 block mb-2 text-sm font-medium text-gray-900 dark:text-white"> contact number </label>
+                        <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" type="text" name="contact" placeholder="contact number"/>
                     </div>
-                    <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> country </label>
+                    <div class=" flex justify-items-center w-fit">
+                        <label class=" w-32 block mb-2 text-sm font-medium text-gray-900 dark:text-white"> country </label>
                         <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" type="text" name="country">
-                        
+
                     </div>
-                    <div >
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> city </label>
+                    <div class=" flex justify-items-center w-fit">
+                        <label class=" w-32 block mb-2 text-sm font-medium text-gray-900 dark:text-white"> city </label>
                         <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" type="text" name="location" placeholder="city">
                     </div>
                     <div>

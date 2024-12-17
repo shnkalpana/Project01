@@ -1,6 +1,6 @@
 <livewire:header/>
-<div class=" sm:ml-64  px-2 mt-16 pt-4 pb-2"/>
-
+<div>
 <livewire:project-table/>
 <livewire:supplier-table/>
+</div>
 <x-footer/>

@@ -1,6 +1,6 @@
 <livewire:header/>
-<div class=" flex justify justify-center pt-20">
-    <div  class="w-full max-w-sm sm:max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+<div class=" ">
+    <div  class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
         <h2 class="text-xl font-medium text-gray-900 dark:text-white"> Edit user {{$user->name}}</h2>
         <form action="{{ route('user.update', $user->id) }}" method="POST">
             @csrf
