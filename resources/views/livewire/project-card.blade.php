@@ -1,11 +1,12 @@
-    <div class=" mx-2 w-auto p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+
+ <div class=" p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             @foreach ($projects as $item)
             <div class="">
-                <div class=" mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    <p class="text-2xl">
+                <div class=" mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+                    <p class="">
                         {{$item->projectname}}
                     </p>
-                    <p class=" text-lg">
+                    <p class=" ">
                         Created at: {{$item->created_at}}
                     </p>
                 </div>
@@ -13,16 +14,16 @@
                     <div class="">
                         @if($item->subprojects->count() > 0)
 
-                            <div class=" relative overflow-x-auto shadow-md rounded-lg">
+                            <div class=" mt-2 relative overflow-x-auto shadow-md rounded-xl">
                                 <table class="w-full text-sm sm:text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <thead class=" text-xs sm:text-sm  text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
                                           <th scope="col" class="px-6 py-3">sub project name</th>
                                           <th scope="col" class="px-6 py-3">created at</th>
                                           <th scope="col" class="px-6 py-3">tasks</th>
                                         </tr>
                                       </thead>
-                                      <tbody>
+                                      <tbody class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         @foreach($item->subprojects as $subproject)
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                             <td class="px-6 py-4">

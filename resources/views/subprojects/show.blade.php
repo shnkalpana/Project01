@@ -1,18 +1,18 @@
 <livewire:header/>
-<div class=" mx-2 ml-72 pt-32">
-  <div class=" mt-2">
+<div class=" ">
+  <div class=" ">
     @livewire('create-task',['subprojectid'=>$subproject->id])
   </div>
 
 
     @if($subproject->tasks->isEmpty())
       <div class=" mt-2">
-        <p class="block mb-2 text-sm font-medium text-brown-900 dark:text-white">Not any tasks created yet!</p>
+        <p class="block mb-2 text-lg font-medium text-brown-900 dark:text-white">Not any tasks created yet!</p>
       </div>
     @else
     <div class=" mt-2 relative overflow-x-auto shadow-md rounded-xl">
-      <table class="w-full text-sm sm:text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead class=" text-xs sm:text-sm  text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <table class="w-full text-xs sm:text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead class=" text-xs  text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 <th scope="col" class="px-6 py-3">Task</th>
                 <th scope="col" class="px-6 py-3">description</th>

@@ -1,4 +1,4 @@
-<div>
+<div class="">
     @auth
     <form wire:submit.prevent="createProject" class=" pl-2 pb-2 space-y-2">
         @csrf
@@ -7,10 +7,12 @@
         @error('project_name') <span class="text-danger">{{ $message }}</span> @enderror
     </form>
 
+    <div class="">
     @if($count>0)
         @livewire('project-card')
     @endif
     @else 
+    </div>
 
     <!--showing login form if user session over or not logged in-->
     <h1>You have logedout! please login</h1>
