@@ -1,6 +1,6 @@
 <livewire:header/>
 <div>
-<livewire:project-table/>
-<livewire:supplier-table/>
+    <livewire:project-table/>
+    <livewire:supplier-table/>
 </div>
 <x-footer/>

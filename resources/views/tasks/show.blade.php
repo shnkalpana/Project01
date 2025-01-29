@@ -1,34 +1,32 @@
 <livewire:header/>
-    <div class=" mt-2 left-64 relative overflow-x-auto shadow-md rounded-xl">
-      <table class="w-full text-sm sm:text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead class=" text-xs sm:text-sm  text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-              <tr>
-                <th scope="col" class="px-6 py-3">Task</th>
-                <th scope="col" class="px-6 py-3">description</th>
-                <th scope="col" class="px-6 py-3">created at</th>
-                <th scope="col" class="px-6 py-3">Responsible</th>
-                <th scope="col" class="px-6 py-3">Deadline</th>
-                <th scope="col" class="px-6 py-3">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($subproject->tasks as $task)
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                  <td class="px-6 py-4">{{$task->name}}</td>
-                  <td class="px-6 py-4">{{$task->description}}</td>
-                  <td class="px-6 py-4">{{$task->created_at}}</td>
-                  <td class="px-6 py-4">{{$task->assignedUser->name}}</td>
-                  <td class="px-6 py-4">{{$task->deadline}}</td>
-                  <td class="px-6 py-4">
-                  @if($task->done>0)
-                  <span>done</span>
-                  @else
-                    <span>On going</span>
-                  @endif
-                </td>
-              </tr>
-              @endforeach
-          </tbody>
-        </table>
+<div class=" p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div class=" mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+        <h1>Task name: {{ $task->name }}</h1>
+        <div class=" mb-2 text-md font-medium tracking-tight text-gray-400 dark:text-white">
+            <h2>Description:</h2>
+            <p>{{ $task->description }}</p>
+        </div>
     </div>
+
+    <!-- Include the Livewire file upload component -->
+    <livewire:file-upload :taskId="$task->id" />
+
+    <!-- Display uploaded files for this task -->
+    <div class=" mb-2 text-md font-medium tracking-tight text-gray-400 dark:text-white">
+        <div >
+            <h2>Uploaded Files</h2>
+        </div>
+
+        <ul>
+            @foreach ($task->files as $file)
+                <li>
+                    <a href="{{ asset('storage/' . $file->filepath) }}" download="{{ $file->filename }}">
+                        {{ $file->filename }}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+
+</div>
 <x-footer/>

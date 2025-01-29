@@ -32,4 +32,9 @@ class Tasks extends Model
     public function boms(){
         return $this->hasMany(bom::class);
     }
+
+    public function files()
+    {
+        return $this->hasMany(UploadedFile::class,'task_id');
+    }
 }

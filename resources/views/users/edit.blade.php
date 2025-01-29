@@ -14,7 +14,7 @@
                 <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" type="email" name="email" value="{{ $user->email }}">
             </div>
             {{-- To change user roll & hourly rate if only you are a admin   --}}
-            @if($user->user_roll == "admin")
+            @if(\Illuminate\Support\Facades\Auth::user()->user_roll == "admin")
             <div>
                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> hourly rate </label>
                 <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" type="numeric" name="hourly_rate" value="{{ $user->hourly_rate }}">

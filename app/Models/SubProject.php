@@ -21,6 +21,6 @@ class SubProject extends Model
     }
 
     public function tasks(){
-        return $this->hasMany(Tasks::class);
+        return $this->hasMany(Tasks::class,'sub_project_id');
     }
 }

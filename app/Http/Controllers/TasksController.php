@@ -60,10 +60,11 @@ class TasksController extends Controller
      * @param  \App\Models\Tasks  $tasks
      * @return \Illuminate\Http\Response
      */
-    public function show(Tasks $tasks)
+    public function show($id)
     {
         //
-        return view('tasks.index');
+        $task = Tasks::findOrFail($id);
+        return view('tasks.show',['task'=>$task]);
     }
 
     /**
@@ -72,9 +73,11 @@ class TasksController extends Controller
      * @param  \App\Models\Tasks  $tasks
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tasks $tasks)
+    public function edit(Tasks $id)
     {
         //
+        $task = Tasks::findOrFail($id);
+        return view('tasks.edit', compact('task'));
     }
 
     /**
@@ -84,11 +87,23 @@ class TasksController extends Controller
      * @param  \App\Models\Tasks  $tasks
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tasks $tasks)
+    public function update(Request $request, $id)
     {
-        //
+    //
+    $task = Tasks::findOrFail($id);
 
+    $validate = $request->validate(
+        [
+            'done' => 'required'
+        ]
+    );
+
+    $task->update($validate);
+
+    // Redirect back or to a success page
+    return Redirect()->back()->with('success', 'User updated successfully!');
     }
+
 
     /**
      * Remove the specified resource from storage.
