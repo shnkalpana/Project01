@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
@@ -49,8 +50,8 @@ class UserController extends Controller
             'name' => ['required', 'min : 3', Rule::unique('users', 'name')],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => ['min : 8', 'max : 30'],
-            'dob' => ['required'],
-            'joined_date' => ['required'],
+            'dob' => ['required','date','before_or_equal:' . Carbon::now() -> subYears(18) -> toDateString()],
+            'joined_date' => ['required','date','after_or_equal:' . Carbon::parse($request->dob)->addYears(18)->toDateString()],
         ]);
 
         $hourlyRate = $request->input('hourly_rate', 0.00);
