@@ -6,6 +6,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
 class UserRegistrationTest extends TestCase
@@ -51,4 +52,24 @@ class UserRegistrationTest extends TestCase
         $response->assertStatus(302);
         $response->assertSessionHasErrors(['name', 'email', 'password', 'dob', 'joined_date']);
     }
+
+    /** @test */
+    public function registration_fails_with_duplicate_email()
+    {
+        User::factory()->create(['email' => 'duplicate@example.com']);
+        $data = [
+            'name' => 'NewUser',
+            'email' => 'duplicate@example.com',
+            'password' => 'password123',
+            'dob' => '1990-01-01',
+            'joined_date' => '2010-01-01',
+        ];
+
+        $response = $this->post('/register', $data);
+        $response->assertStatus(302);
+        $response->assertSessionHasErrors(['email']);
+    }
+
+
+
 }

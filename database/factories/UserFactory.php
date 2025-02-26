@@ -21,6 +21,7 @@ class UserFactory extends Factory
             'password' => bcrypt('password123'),
             'dob' => Carbon::today()->subYears(20)->subDays(rand(1, 365)),
             'joined_date' => Carbon::today()->subYears(1),
+            'hourly_rate' => $this->faker->randomFloat(2, 10, 50),
         ];
     }
 }
